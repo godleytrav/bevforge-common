@@ -1,0 +1,7 @@
+{
+  "name": "@bevforge/os-ui",
+  "private": true,
+  "scripts": {
+    "dev": "vite"
+  }
+}
