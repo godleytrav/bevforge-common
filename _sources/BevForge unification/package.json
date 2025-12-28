@@ -1,0 +1,16 @@
+{
+  "name": "bevforge-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "OS",
+    "ops",
+    "shared"
+  ],
+  "scripts": {
+    "dev:os": "cd OS && npm run dev",
+    "dev:ops": "cd ops && pnpm run dev",
+    "build:os": "cd OS && npm run build",
+    "build:ops": "cd ops && pnpm run build"
+  }
+}
