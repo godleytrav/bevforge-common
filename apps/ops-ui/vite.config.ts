@@ -1,9 +1,6 @@
 import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
-import sourceMapperPlugin from "./source-mapper/src/index";
-import { devToolsPlugin } from "./dev-tools/src/vite-plugin";
-import { fullStoryPlugin } from "./fullstory-plugin";
 import apiRoutes from "vite-plugin-api-routes";
 
 const allowedHosts: string[] = [];
@@ -22,20 +19,14 @@ if (allowedHosts.length === 0) {
 
 export default defineConfig(({ mode }) => ({
 	plugins: [
-		react({
-			babel: {
-				plugins: [sourceMapperPlugin],
-			},
-		}),
+		react(),
 		apiRoutes({
 			mode: 'isolated',
       configure: 'src/server/configure.js',
 			dirs: [{ dir: './src/server/api', route: '' }],
       forceRestart: mode === "development",
 		}),
-		...(mode === "development"
-			? [devToolsPlugin() as Plugin, fullStoryPlugin()]
-			: []),
+		
 	],
 
 	resolve: {
